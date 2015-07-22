@@ -16,10 +16,18 @@ $(document).ready(function() {
     }
   });
 
-  function ajaxCall() {
-    
-    // your code will go here
+function ajaxCall() {
 
-  }
+    var input = $("#text-field").val();
 
-});
+    $.ajax({
+      type: "GET",
+      url: "/widget", // Make an AJAX call to /widget and pass it the typed query.
+      data: {search_keyword: input}
+ 
+    }).done(function(searchResults) {
+      $("#search-results").html(searchResults); // insert the HTML that the AJAX call returns into the page.
+    });
+   }
+ 
+ });
